@@ -4,30 +4,21 @@ import Shop from '../images/Shop.jpg';
 import Mobile from '../images/Mobile.jpg';
 import Laptop from '../images/Laptops.jpg';
 import './Bootstrap.css';
+import {Link} from "react-router-dom";
 
-class Carousel extends Component {
+class MyCarousel extends Component {
     render() {
         return (
             <Carousel>
                 <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={Shop}
-                        alt="First slide"
-                    />
+                        <img
+                            className="d-block w-100"
+                            src={Laptop}
+                            alt="Third slide"
+                        />
                     <Carousel.Caption>
-                            <h1>For Home</h1>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={Laptop}
-                        alt="Third slide"
-                    />
-                    <Carousel.Caption>
-                        <h1>Laptops</h1>
-                    </Carousel.Caption>
+                        <Link to="/laptop"><h4 className="text-title">Laptops</h4></Link>
+                        </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
@@ -35,9 +26,18 @@ class Carousel extends Component {
                         src={Mobile}
                         alt="Third slide"
                     />
-
                     <Carousel.Caption>
-                        <h1>Mobile Phones</h1>
+                        <Link to="/mobile"><h4 className="text-title">Mobile Phones</h4></Link>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={Shop}
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <Link to="/tv"><h4 className="text-title">Home Electronics</h4></Link>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
@@ -45,4 +45,4 @@ class Carousel extends Component {
     }
 }
 
-export default Carousel;
+export default MyCarousel;

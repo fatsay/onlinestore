@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {ProductConsumer} from "../context";
-import '../App.css';
+import {ProductConsumer} from "../../context";
+import '../../App.css';
 
 class Product extends Component {
     render() {
@@ -38,8 +38,7 @@ class Product extends Component {
                             {title}
                         </p>
                         <h5 className="text-capitalize mb-0">
-                            {price}
-                            <span className="mr-1"> SKr</span>
+                            {price}<span className="mr-1">$</span>
                         </h5>
                     </div>
                 </div>

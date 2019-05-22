@@ -1,0 +1,52 @@
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-style: italic;
+    font-size: 12px;
+}
+.login{
+    position: absolute;
+    top: 50%;
+    margin-left: 34%;
+    width: 320px;
+    margin-top: 90px;
+}
+.register {
+    position: absolute;
+    top: 50%;
+    margin-left: 33%;
+    max-width: 350px;
+    margin-top: 90px;
+    }
+
+.image {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.header {
+    text-align: center;
+    font-size: 30px;
+    color: coral;
+    font-family: "Adobe Arabic";
+
+}
+.info {
+    text-align: center;
+    color: black;
+    margin-top: 10px;
+    font-size: 10px;
+}
+.info-img {
+    display: flex;
+    text-align: center;
+    color: black;
+    margin-top: 10px;
+    font-size: 10px;
+}
+.signIn-option {
+    width: 250px;
+    margin: auto;
+}
+.signIn-button {
+    font-size: 13px;
+    margin:auto;
+}

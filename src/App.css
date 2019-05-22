@@ -1,0 +1,63 @@
+:root{
+    --mainBlue:#2a2a72;
+    --lightBlue:#009ffd;
+    --mainWhite:#f3f3f3;
+    --mainDark:#232528;
+    --mainYellow:#ffa400;
+}
+.body{
+    font-family: "Adobe Arabic";
+    background: var(--mainWhite) !important;
+    color:var(--mainDark)!important;
+}
+.text-title{
+    font-family: "Adobe Caslon Pro";
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+}
+.text-blue{
+    color: var(--mainBlue);
+}
+.text-bright{
+    color: var(--lightBlue)
+}
+
+/*
+Product container css
+ */
+
+.card {
+
+    transition: all 1s linear;
+    width: 300px;
+    height: 300px;
+}
+.card-footer {
+
+    border-top: transparent;
+    transition: all 1s linear;
+}
+.img-container{
+    position: relative;
+    overflow: hidden;
+}
+.card-img-top {
+    transition: all 1s linear;
+    max-width:100%;
+    height:auto;
+
+}
+.btn-card {
+    position: absolute;
+    bottom:10px;
+    right: 10px;
+    padding:2px 4px;
+    border :none;
+    font-size: 17px;
+    border-radius: 5px;
+}
+.cart-icon{
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+}

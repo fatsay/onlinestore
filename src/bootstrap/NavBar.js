@@ -1,45 +1,133 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import {Button,Form, FormControl} from "react-bootstrap";
+import {Button} from "react-bootstrap";
+import Firebase from "../config/Firebase";
+import logo from '../images/logo1.png'
+
 class NavBar extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            email:"",
+            isAdmin:""
+        };
+        this.logOut=this.logOut.bind(this)
+    }
+    componentDidMount() {
+        const user=localStorage.getItem('user');
+        if (user){
+            let name=user.split("@");
+            this.setState({
+                email:name[0],
+            })
+        }
+        //api call to get user call
+        //set state userRole according to user role
+        //change navBar
+        /*
+        let user=Firebase.auth().currentUser;
+            let token=user.getIdToken(true).then(token=>
+                axios.get('https://europe-west1-cloudproject-f25f2.cloudfunctions.net/data/role/'+this.state.email,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).then(resp => {
+                    this.setState({userRole:resp.data.role});
+                    this.props.history.push('/')
+                })
+
+            ).catch(error => {
+                this.setState({message: error.toString()});
+            });
+         */
+
+    }
+    logOut=event=>{
+        event.preventDefault();
+        Firebase.auth().signOut();
+        this.setState({
+            email:""
+        })
+    };
+
     render() {
         return (
             <nav className="navbar navbar-light bg-faded rounded navbar-toggleable-md">
+                <div className="container">
                 <Button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#containerNavbar" aria-controls="containerNavbar" aria-expanded="false"
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"/>
                 </Button>
-                <Link className="navbar-brand" to="#">Navbar</Link>
-
-                <div className="collapse navbar-collapse" id="containerNavbar">
-                    <ul className="navbar-nav mr-auto">
+                    <img src={logo} alt={logo}/>
+                <div className="collapse navbar-collapse ml-4" id="containerNavbar">
+                    <ul className="navbar-nav mr-auto align-items-center">
                         <li className="nav-item active">
                             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/">Link</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link disabled" to="/">Disabled</Link>
-                        </li>
                         <li className="nav-item dropdown">
                             <Link className="nav-link dropdown-toggle" to="http://example.com" id="dropdown01"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ES6 Examples</Link>
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</Link>
                             <div className="dropdown-menu" aria-labelledby="dropdown01">
-                                <Link className="dropdown-item" to="/arrowFunction">Arrow Function</Link>
-                                <Link className="dropdown-item" to="/objectClass">Object Class</Link>
-                                <Link className="dropdown-item" to="/">Something else here</Link>
+                                <Link className="dropdown-item" to="/mobile">Mobile Phones</Link>
+                                <Link className="dropdown-item" to="/laptop">Laptops</Link>
+                                <Link className="dropdown-item" to="/tv">Tv</Link>
                             </div>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/contact">Contact</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/about">About</Link>
+                        </li>
                     </ul>
-                    <Form className="form-inline my-2 my-md-0">
-                        <FormControl className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                            <Button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</Button>
-                    </Form>
+                        {this.state.email==="" &&
+                        <ul className="navbar-nav mr-lg-0 align-items-center">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">Log in</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/register">Register</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/cart">
+                                    <button type="button" className="btn btn-outline-warning">
+                                        <span className="mr-2">
+                                             <i className="fas fa-cart-plus"/>
+                                        </span>
+                                        My cart
+                                    </button>
+                                </Link>
+                            </li>
+                        </ul>
+                        }
+
+                        {this.state.email.length>0 &&
+                        <ul className="navbar-nav mr-lg-0 align-items-center">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="">{this.state.email}</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/" onClick={this.logOut}>Log out</Link>
+
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/cart">
+                                    <button type="button" className="btn btn-outline-warning">
+                                       <span className="mr-2">
+                                             <i className="fas fa-cart-plus"/>
+                                        </span>
+                                        My cart
+                                    </button>
+                                </Link>
+                            </li>
+                        </ul>
+                        }
+                </div>
                 </div>
             </nav>
-
         );
     }
 }

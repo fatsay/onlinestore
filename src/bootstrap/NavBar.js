@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import Firebase from "../config/Firebase";
-import logo from '../images/logo1.png'
+import logo from '../images/logo1.png';
+import UserImg from '../images/UserImage.png';
 
 class NavBar extends Component {
     constructor(props){
@@ -86,7 +87,7 @@ class NavBar extends Component {
                         {this.state.email==="" &&
                         <ul className="navbar-nav mr-lg-0 align-items-center">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/login">Log in</Link>
+                                <Link className="nav-link" to="/login">Login</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/register">Register</Link>
@@ -106,13 +107,18 @@ class NavBar extends Component {
 
                         {this.state.email.length>0 &&
                         <ul className="navbar-nav mr-lg-0 align-items-center">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="">{this.state.email}</Link>
+                            <li className="text-right">
+                                <img src={UserImg} alt="user" style={{width:"20%"}}/>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/" onClick={this.logOut}>Log out</Link>
 
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to="http://example.com" id="dropdown02"
+                                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.email}</Link>
+                                <div className="dropdown-menu" aria-labelledby="dropdown02">
+                                    <Link className="dropdown-item" to="/" onClick={this.logOut}>Logout</Link>
+                                </div>
                             </li>
+
                             <li className="nav-item">
                                 <Link className="nav-link" to="/cart">
                                     <button type="button" className="btn btn-outline-warning">

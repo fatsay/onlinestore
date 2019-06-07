@@ -25,10 +25,10 @@ class Home extends Component {
                         <MyCarousel/>
                     </div>
                     <div className="row mt-3 mb-3">
-                        <div className="col-md-6">
+                        <div className="col-md-6 text-center">
                             <img src={BottomImg1} alt="img1"/>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 text-center">
                             <img src={BottomImg2} alt="img2"/>
                         </div>
                     </div>

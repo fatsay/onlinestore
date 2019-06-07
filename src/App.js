@@ -12,6 +12,10 @@ import Details from './components/products/Details';
 import Cart from './components/cart/Cart';
 import ProductListTv from './components/products/ProductListTv';
 import ProductListLaptop from './components/products/ProductListLaptop';
+import Shipping from './components/cart/Shipping';
+import Payment from './components/cart/Payment';
+import About from './components/home/About';
+import Contact from './components/home/Contact';
 
 class App extends Component {
     constructor(props){
@@ -28,7 +32,6 @@ class App extends Component {
             if (user) {
                 this.setState({user});
                 localStorage.setItem('user',user.email.toString());
-                //console.log(user.email)
             }else {
                 this.setState({user:null});
                 localStorage.removeItem('user');
@@ -48,6 +51,10 @@ class App extends Component {
                     <Route exact path="/laptop" component={ProductListLaptop}/>
                     <Route exact path="/details" component={Details}/>
                     <Route exact path="/cart" component={Cart}/>
+                    <Route exact path="/shipping" component={Shipping}/>
+                    <Route exact path="/payment" component={Payment}/>
+                    <Route exact path="/about" component={About}/>
+                    <Route exact path="/contact" component={Contact}/>
                     <Route component={Default}/>
             </Switch>
         </React.Fragment>

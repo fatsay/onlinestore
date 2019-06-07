@@ -61,3 +61,56 @@ Product container css
     font-size: 20px;
     color: red;
 }
+
+/*Shipping and payment*/
+box-1{
+    height: 100px;
+    margin-top: 60px;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding-top: 30px;
+}
+.box-2{
+    min-height: 200px;
+    margin-top: 60px;
+    border-style: solid ;
+    border-color: #f7f7f7;
+    border-width: 2px;
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.box-3{
+    height: 550px;
+    margin-top: 60px;
+    border-style: solid ;
+    border-color: #f7f7f7;
+    border-width: 2px;
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.box-header{
+    text-align: left;
+    font-family: "Adobe Gothic Std";
+    background: #f7f7f7;
+    padding-top: 15px;
+}
+.info-span{
+    text-align: left;
+    font-family: "Adobe Gothic Std";
+    color: coral;
+    font-size: small;
+}
+.info-span2{
+    text-align: left;
+    font-family: "Adobe Gothic Std";
+    color: coral;
+    font-size: medium;
+}
+.payment-option {
+    margin-top: 40px;
+    text-align: left;
+    font-family: "Adobe Gothic Std";
+    font-size: medium;
+}

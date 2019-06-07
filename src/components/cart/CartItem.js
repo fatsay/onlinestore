@@ -6,7 +6,7 @@ function CartItem({item,value}) {
     return (
         <div className="row my-2 text-capitalize text-center mt-4">
             <div className="col-md-2 col-lg-2">
-                <img src={img} style={{width:'5rem',height:'5rem'}}
+                <img src={img} style={{width:'5rem',height:'4rem'}}
                      className="img-fluid" alt="product"/>
             </div>
             <div className="col-md-2 col-lg-2 align-self-center">

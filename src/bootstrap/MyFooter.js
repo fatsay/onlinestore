@@ -10,7 +10,7 @@ class MyFooter extends Component {
                 <div className="container">
                     <Row>
                         <Col md={9}>
-                            <span className="text-muted">Company@2019</span>
+                            <span className="text-muted">@2019 Best Electronics AB</span>
                         </Col>
                         <Col md={1}>
                             <img src={CustomerService} alt="customer"/>

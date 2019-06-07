@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {storeProducts} from "./data";
+import axios from 'axios';
 
 const ProductContext = React.createContext();
 //Provider
@@ -11,7 +11,7 @@ class ProductProvider extends Component {
         cart:[],
         cartSubTotal:0,
         cartTax:0,
-        cartTotal:0
+        cartTotal:0,
 
     };
 
@@ -47,14 +47,23 @@ class ProductProvider extends Component {
     };
     //set product from server via api call
     setProduct=()=>{
-        let tempProduct=[];
-        storeProducts.forEach(item =>{
-            const  singleItem={...item};
-            tempProduct=[...tempProduct,singleItem];
-        });
-        this.setState(()=>{
-            return {products:tempProduct}
+        axios.get('https://ego3z40gfe.execute-api.eu-north-1.amazonaws.com/default/items',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin' : '*',
+                    'Access-Control-Allow-Methods' : 'GET'
+                }
+            }).then(resp => {
+            this.setState({
+                products:resp.data.Items
+            });
         })
+            .catch(error => {
+                //this.setState({message: error.toString()});
+                console.log(error)
+            });
+
     };
     componentDidMount() {
         this.setProduct();
@@ -135,6 +144,7 @@ class ProductProvider extends Component {
             }
         })
     };
+
     render() {
         return(
             <ProductContext.Provider value={{
@@ -145,7 +155,7 @@ class ProductProvider extends Component {
                 increment:this.increment,
                 decrement:this.decrement,
                 removeItem:this.removeItem,
-                clearCart:this.clearCart
+                clearCart:this.clearCart,
             }}>
                 {this.props.children}
             </ProductContext.Provider>
